@@ -1,13 +1,15 @@
 package com.Themfg.ELearn.entity;
 
 import com.Themfg.ELearn.entity.BaseEntity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 
+@Data
+@Entity
+@Table(name = "baglanti")
 public class Baglanti extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
