@@ -1,4 +1,4 @@
-package com.Themfg.ELearn.dto;
+package com.Themfg.ELearn.entity;
 
 import com.Themfg.ELearn.entity.BaseEntity;
 import jakarta.persistence.*;
