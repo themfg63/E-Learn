@@ -27,7 +27,7 @@ public class Adres extends BaseEntity{
     private String sehir;
 
     @NotBlank(message = "İlçe boş bırakılamaz")
-    private String ilce;
+    private String konum;
 
     @NotBlank(message = "Posta Kodu Boş bırakılamaz")
     @Size(min = 5,max = 5)

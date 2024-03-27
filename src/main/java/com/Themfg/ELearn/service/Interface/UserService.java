@@ -6,5 +6,5 @@ import com.Themfg.ELearn.entity.Ogrenci;
 public interface UserService {
     User profilBilgileriniDoldur(Ogrenci ogrenci);
 
-    User profiliGuncelle(Ogrenci ogrenci, User user);
+    Ogrenci profiliGuncelle(Ogrenci ogrenci, User user);
 }

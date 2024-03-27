@@ -1,0 +1,137 @@
+Entity
+    Address -> Adres
+        address -> id
+        address1 -> adres
+        address2 -> ---
+        city -> sehir
+        state -> konum
+        zipCode -> postaKodu
+    baseEntity -> baseEntity
+        createdBy -> olusturmaTarihi
+        createdBy -> olusturanKisi
+        updatedAt -> guncellemeTarihi
+        updatedBy -> guncelleyenKisi
+    Contact -> Baglanti
+        contactId -> id
+        name -> name
+        mobileNum -> telNo
+        email -> email
+        subject -> konu
+        message -> mesaj
+        status -> konum
+    Courses -> Kurs
+        courseId -> id
+        name -> ad
+        fees -> ucret
+        person -> ogrenci
+        addStudent{} -> ogrenciEkle{}
+        deleteStudent{} -> ogrenciSil{}
+    EazyClass -> Sinif
+        classId -> id
+        name -> name
+        Set<Person> persons -> Set<Ogrenci> ogrenci1
+        addStudent{} -> ogrenciEkle{}
+        deleteStudent{} -> ogrenciSil{}
+    holiday -> tatil
+        day -> gun
+        reason -> gerekce
+        type -> type
+        festival -> dini
+        federal -> resmi
+    person -> ogrenci
+        personId -> id
+        name -> ad
+        mobilePNumber -> telNo
+        email -> email
+        pwd -> sifre
+        confirmPwd -> sifreTekrar
+        roles -> role
+        address -> adres
+        eazyClass -> sinif
+        courses -> kurs
+        signUpForClass{} -> derseKaydol{}
+        leaveClass{} -> siniftanCik{}
+        signUpForCourse{} -> kursaKaydol{}
+        leaveCourse{} -> kurstanCik{}
+    profile -> user
+        name -> ad
+        mobileNumber -> telNo
+        email -> email
+        address1 -> adres
+        address2 -> ---
+        city -> sehir
+        state -> konum
+        zipCode -> postaKodu
+    response -> response
+        statusCode -> statuKodu
+        statusMsg -> statuMesaji
+    roles -> role
+        roleId -> id
+        roleName -> roleName
+****************************************
+Repository
+    addresRepository -> adresRepository
+    contactRepository -> baglantiRepository
+        findByStatus -> findByKonum
+        findByStatus -> findByKonum
+    coursesRepository -> kursRepository
+        findAllByOrderByNameDesc -> findAllByOrderByNameDesc
+        findAllByOrderByName -> findAllByOrderByName
+    eazyClassRepository -> sinifRepository
+    holidayRepository -> tatilRepository
+    personRepository -> ogrenciRepository
+        findByEmail -> findByEmail
+    rolesRepository -> rolesRepository
+        findByRoleName -> findByRoleName
+****************************************
+Service
+    AdminService -> AdminService
+        findMsgsWithOpenStatus(PageRequest pageRequest) -> findMesajVeKonum(PageRequest request)
+        updateMsgStatus(int contactId) -> mesajiGuncelle(Long id)
+        addNewClass(EazyClass eazyClass) -> sinifEkle(Sinif sinif)
+        deleteClassById(int id) -> sinifSil(Long id)
+        getClassById(int classId) -> getSinifById(Long id)
+        addNewStudentToClass(EazyClass eazyClass, Person person) -> sinifaYeniOgrenciEkle(Sinif sinif, Ogrenci ogrenci)
+        getAllClasses() -> getAllSinif()
+        deleteStudentFromClass(EazyClass eazyClass, int personId) -> siniftanOgrenciSil(Sinif sinif,Long id)
+        finAllCourses -> findAllKurs
+        addNewCourse -> kursEkle
+        getCourseById -> getKursById
+        addNewStudentToCourse(Courses courses, Person person) -> kursaOgrenciEkle(Kurs kurs, Ogrenci ogrenci)
+       deleteStudentFromCourse(Courses courses, int personId) -> kurstanOgrenciSil(Kurs kurs,Long id)
+    ContactService -> BaglantiService
+        saveMessageDetails(Contact contact) -> mesajAyrintilariniKaydet(Baglanti baglanti)
+        findMsgsWithOpenStatus(PageRequest pageRequest) -> konumaGoreMesajiBul(PageRequest pageRequest)
+        updateMsgStatus(int contactId) -> mesajiGuncelle(Long id)
+        findContactsByStatus(String status) -> findBaglantiByKonum(String konum)
+        deleteMessageById(int id) -> mesajiSilById(Long id)
+        findContactById(int contactId) -> findBaglantiById(Long id)
+        deleteMessage(Contact contact) -> mesajiSil(Baglanti baglanti)
+    CoursesService -> KursService
+        findAllCourses -> findAllKurs
+        saveCourse(Courses course) -> kursuKaydet(Kurs kurs)
+        findCourseById(int id) -> findKursById(Long id)
+        addNewStudent(Courses courses, Person personEntity) -> kursaYeniOgreniEkle(Kurs kurs, Ogrenci ogrenci)
+        deleteStudentFromCourse(Courses courses, int personId) -> kurstanOgrenciSil(Kurs kurs,Long id)
+    EazyService -> SinifService
+        findClassById(int id) -> findSinifById(Long id)
+        saveClass(EazyClass eazyClass) -> sinifiKaydet(Sinif sinif)
+        deleteClassById(int id) -> sinifiSilById(Long id)
+        addNewStudent(EazyClass eazyClass, Person person) -> sinifaOgrenciEkle(Sinif sinif, Ogrenci ogrenci)
+        findAllClasses -> findAllSinif
+        deleteStudentFromClass(EazyClass eazyClass, int personId) -> siniftanOgrenciSil(Sinif sinif,Long id)
+    HolidayService -> TatilService
+        findAllHolidays -> findAllTatil
+    PersonService -> OgrenciService
+        savePerson(Person person) -> ogrenciKaydet(Ogrenci ogrenci)
+        updatePerson(Person person) -> ogrenciGuncelle(Ogrenci ogrenci);
+        findPersonByEmail(String email) -> findOgrenciByEmail(String email)
+        leaveClass(int id)-> siniftanAyril(Long id)
+        signUpForClass(Person person, EazyClass eazyClass) -> sinifaKaydol(Ogrenci ogrenci, Sinif sinif)
+        findPersonById(int id) -> findOgrenciById(Long id)
+        signUpForCourse(Person person, Courses courses) -> kursaKaydol(Ogrenci ogrenci, Kurs kurs)
+        leaveCourse(int personId, Courses courses) -> kurstanAyril(Long id, Kurs kurs)
+    ProfileService -> UserService
+        populateProfileData(Person person) -> profilBilgileriniDoldur(Ogrenci ogrenci)
+        updateProfile(Person person, Profile profile) -> profiliGuncelle(Ogrenci ogrenci, User user)
+

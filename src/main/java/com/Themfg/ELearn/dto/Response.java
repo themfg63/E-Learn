@@ -8,5 +8,5 @@ import lombok.*;
 @AllArgsConstructor
 public class Response {
     private String statuKodu;
-    private String statuMesajı;
+    private String statuMesaji;
 }
