@@ -138,3 +138,16 @@ Service
 THYMELEAF
     /admin/displayStudents?classId -> /admin/ogrencileriGoster?sinifId
     /admin/viewStudents?id -> /admin/ogrencileriGoruntule?id
+
+
+
+
+HTML
+    about.html -> hakkinda.html
+    classes.html -> siniflar.html
+    contact.html -> baglanti.html
+    course_students -> kurs_ogrenci.html
+    courses_enrolled -> kayitli_kurslar.html
+    courses_secure -> kurs_guvenligi.html
+    courses.html -> kurslar.html
+
