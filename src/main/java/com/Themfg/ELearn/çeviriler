@@ -135,3 +135,6 @@ Service
         populateProfileData(Person person) -> profilBilgileriniDoldur(Ogrenci ogrenci)
         updateProfile(Person person, Profile profile) -> profiliGuncelle(Ogrenci ogrenci, User user)
 
+THYMELEAF
+    /admin/displayStudents?classId -> /admin/ogrencileriGoster?sinifId
+    /admin/viewStudents?id -> /admin/ogrencileriGoruntule?id
